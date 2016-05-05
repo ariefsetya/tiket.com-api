@@ -8,6 +8,9 @@ class HomeController extends Controller {
 	{
 		$api = new API;
 		$hasil = $api->getCurl('general_api/listCurrency');
+		
+		dd($hasil);
+
 		\App\Currency::whereRaw('id>0')->delete();
 		$data = array();//baru
 
@@ -55,7 +58,7 @@ class HomeController extends Controller {
 		$hasil = $api->getCurl('general_api/listCountry');
 		\App\Country::whereRaw('id>0')->delete();
 		$data = array();
-		//echo "<pre>".print_r($hasil,1)."</pre>";
+
 		foreach ($hasil->listCountry as $key) {
 			$ctr = new \App\Country;
 			$ctr->country_id = $key->country_id;
