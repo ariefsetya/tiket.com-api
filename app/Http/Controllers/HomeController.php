@@ -9,7 +9,6 @@ class HomeController extends Controller {
 		$api = new API;
 		$hasil = $api->getCurl('general_api/listCurrency');
 		
-		dd($hasil);
 
 		\App\Currency::whereRaw('id>0')->delete();
 		$data = array();//baru
@@ -31,7 +30,7 @@ class HomeController extends Controller {
 		/*baru*/
 	}	
 
-	public function get_Lang()
+	public function get_Language()
 	{
 		$api = new API;
 		$hasil = $api->getCurl('general_api/listLanguage');
@@ -74,21 +73,48 @@ class HomeController extends Controller {
 						)
 					);
 	}
-
-	public function view_Currency()
+	public function get_Airport()
 	{
+		$api = new API;
+		$hasil = $api->getCurl('flight_api/all_airport');
+		\App\Airport::whereRaw('id>0')->delete();
+		$data = array();
+
+		foreach ($hasil->all_airport->airport as $key) {
+			$ctr = new \App\Airport;
+			$ctr->airport_name = $key->airport_name;
+			$ctr->airport_code = $key->airport_code;
+			$ctr->location_name = $key->location_name;
+			$ctr->country_id = $key->country_id;
+			$ctr->save();
+			$data['id'][$ctr->id]=$key->country_id;
+		}
+		echo json_encode(
+					array(
+						'status_code'=>200,
+						'inserted_data'=>sizeof($data['id'])
+						)
+					);
+	}
+	public function view_Currency()
+	{	
 		$s['data'] = \App\Currency::all();
 		return view('master.currency')->with($s);
 	}	
-	public function view_Lang()
+	public function view_Language()
 	{
 		$s['data'] = \App\Lang::all();
-		return view('master.lang')->with($s);
+		return view('master.language')->with($s);
 	}
 	public function view_Country()
 	{
 		$s['data'] = \App\Country::all();
 		return view('master.country')->with($s);
+	}
+	public function view_Airport()
+	{
+		$s['data'] = \App\Airport::all();
+		return view('master.airport')->with($s);
 	}
 
 }

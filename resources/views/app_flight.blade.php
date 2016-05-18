@@ -7,10 +7,12 @@
 	<title>Laravel</title>
 
 	<!--Import Google Icon Font-->
-	<!-- <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<!--Import materialize.css-->
 	<link type="text/css" rel="stylesheet" href="{{url('css/materialize.min.css')}}"  media="screen,projection"/>
 
+	<link rel="stylesheet" 
+		href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -53,9 +55,15 @@
 	@yield('content')
 	</div>
 
-	<!-- Scripts -->
 	<script type="text/javascript" src="{{url('js/jquery.min.js')}}"></script>
+
+	<!-- include jquery ui -->
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<!-- Scripts -->
     <script type="text/javascript" src="{{url('js/materialize.min.js')}}"></script>
+    
+	<!-- yield untuk footer, setelah jquery -->
+    @yield('footer')
 
     </body>
 </html>
