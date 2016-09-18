@@ -107,63 +107,64 @@
                   },
                   dataType:'json',//hasil berupa json
                   success:function(data) {
-                        if(Object.keys(data.departures.result).length==0){
-                        //ambil data departures
-                        var hasil_depart = data.departures;
+                              //ambil data departures
+                              var hasil_depart = data.departures;
 
-                        var res_depart = hasil_depart.result;
+                              var res_depart = hasil_depart.result;
+                              if(res_depart.length>0){
 
-                        var html = '<ul class="collapsible popout" data-collapsible="accordion">';
+                              var html = '<ul class="collapsible popout" data-collapsible="accordion">';
 
-                        //looping hasil departures
-                        for(data in res_depart){
-                              //tampilkan dalam bentuk collapsible
-                              html += '<li>';
-                              html += '<div class="collapsible-header">';
-                              html += '<img src="'+res_depart[data].image+'">'
-                              html += res_depart[data].airlines_name+ ' ('+res_depart[data].full_via+') with '+res_depart[data].flight_number;
-                              html += '<div class="right">'+res_depart[data].markup_price_string+'</div>';
-                              html += '</div>';
-                              html += '<div class="collapsible-body" style="padding:10px;">';
-
-                              //ambil array object flight info
-                              var flights = res_depart[data].flight_infos;
-                              var flight_infos = flights.flight_info;
-
-                              //looping isi array flight info
-                              for(info in flight_infos){
-                                    //masukkan ke dalam body collapsible
-                                    html += '<h5>'+flight_infos[info].flight_number+'</h5>';
-                                    html += '<div class="right">';
-                                    html += flight_infos[info].arrival_city+' at '
-                                          +flight_infos[info].simple_arrival_time;
+                              //looping hasil departures
+                              for(data in res_depart){
+                                    //tampilkan dalam bentuk collapsible
+                                    html += '<li>';
+                                    html += '<div class="collapsible-header">';
+                                    html += '<img src="'+res_depart[data].image+'">'
+                                    html += res_depart[data].airlines_name+ ' ('+res_depart[data].full_via+') with '+res_depart[data].flight_number;
+                                    html += '<div class="right">'+res_depart[data].markup_price_string+'</div>';
                                     html += '</div>';
-                                    html += '<div class="left">';
-                                    html += flight_infos[info].departure_city+' at '
-                                          +flight_infos[info].simple_departure_time;
-                                    html += '</div>';
+                                    html += '<div class="collapsible-body" style="padding:10px;">';
 
-                                    html += '<br>';
-                                    html += '<hr>';
+                                    //ambil array object flight info
+                                    var flights = res_depart[data].flight_infos;
+                                    var flight_infos = flights.flight_info;
+
+                                    //looping isi array flight info
+                                    for(info in flight_infos){
+                                          //masukkan ke dalam body collapsible
+                                          html += '<h5>'+flight_infos[info].flight_number+'</h5>';
+                                          html += '<div class="right">';
+                                          html += flight_infos[info].arrival_city+' at '
+                                                +flight_infos[info].simple_arrival_time;
+                                          html += '</div>';
+                                          html += '<div class="left">';
+                                          html += flight_infos[info].departure_city+' at '
+                                                +flight_infos[info].simple_departure_time;
+                                          html += '</div>';
+
+                                          html += '<br>';
+                                          html += '<hr>';
+                                    }
+
+                                    html += '</div>';
+                                    html += '</li>';
                               }
 
-                              html += '</div>';
-                              html += '</li>';
+                              html += '</ul>';
+
+                              $("#result").html(html);
+                              $('.collapsible').collapsible();
+
+
+                              $("#search_button").html('Search');
+                              //$("#result").html(data);
+                        }else{
+                              $("#result").html('<h1>No Flight Data Found</h1>');
+                              $("#search_button").html('Search');
                         }
-
-                        html += '</ul>';
-
-                        $("#result").html(html);
-                        $('.collapsible').collapsible();
-
-
-                        //$("#result").html(data);
-                  }else{
-                        $("#result").html('<h1>No Flight Data Found</h1>');
                   }
-                        $("#search_button").html('Search');
-                  }
-            })
+            });
       }
 </script>
 @endsection
