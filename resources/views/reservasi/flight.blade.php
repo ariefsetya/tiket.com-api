@@ -39,31 +39,33 @@
                         <input type="text" class="for_date" id="return_date" name="return_date">
                         <label for="">Return Date</label>
       		</div>
-      		<div class="input-field col s1">
+      		<div class="input-field col s2">
       			<select name="adult" id="adult" class="browser-default">
       				@for($i=1;$i<6;$i++)
       				<option value="{{$i}}">{{$i}} Adult</option>
       				@endfor
       			</select>
       		</div>
-      		<div class="input-field col s1">
+      		<div class="input-field col s2">
       			<select name="child" id="child" class="browser-default">
       				@for($i=0;$i<6;$i++)
       				<option value="{{$i}}">{{$i}} Child</option>
       				@endfor
       			</select>
       		</div>
-      		<div class="input-field col s1">
+      		<div class="input-field col s2">
       			<select name="infant" id="infant" class="browser-default">
       				@for($i=0;$i<6;$i++)
       				<option value="{{$i}}">{{$i}} Infant</option>
       				@endfor
       			</select>
       		</div>
-      		<div class="input-field col s3">
-      			<span class="btn" id="search_button" onclick="search()">Search</span>
-      		</div>
       	</div>
+            <div class="row">
+                  <div class="input-field col s3 right">
+                        <span class="btn" id="search_button" onclick="search()">Search</span>
+                  </div>
+            </div>
       </div>
     </div>
 </div>
