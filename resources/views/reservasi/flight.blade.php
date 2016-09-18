@@ -105,6 +105,7 @@
                   },
                   dataType:'json',//hasil berupa json
                   success:function(data) {
+                        if(data.departures!=null){
                         //ambil data departures
                         var hasil_depart = data.departures;
 
@@ -153,9 +154,12 @@
                         $("#result").html(html);
                         $('.collapsible').collapsible();
 
-                        $("#search_button").html('Search');
 
                         //$("#result").html(data);
+                  }else{
+                        $("#result").html('<h1>No Flight Data Found</h1>');
+                  }
+                        $("#search_button").html('Search');
                   }
             })
       }
