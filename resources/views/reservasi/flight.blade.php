@@ -42,26 +42,23 @@
       		<div class="input-field col s1">
       			<select name="adult" id="adult" class="browser-default">
       				@for($i=1;$i<6;$i++)
-      				<option value="{{$i}}">{{$i}}</option>
+      				<option value="{{$i}}">{{$i}} Adult</option>
       				@endfor
       			</select>
-                        <label for="">Adult</label>
       		</div>
       		<div class="input-field col s1">
       			<select name="child" id="child" class="browser-default">
       				@for($i=0;$i<6;$i++)
-      				<option value="{{$i}}">{{$i}}</option>
+      				<option value="{{$i}}">{{$i}} Child</option>
       				@endfor
       			</select>
-                        <label for="">Child</label>
       		</div>
       		<div class="input-field col s1">
       			<select name="infant" id="infant" class="browser-default">
       				@for($i=0;$i<6;$i++)
-      				<option value="{{$i}}">{{$i}}</option>
+      				<option value="{{$i}}">{{$i}} Infant</option>
       				@endfor
       			</select>
-                        <label for="">Infant</label>
       		</div>
       		<div class="input-field col s3">
       			<span class="btn" id="search_button" onclick="search()">Search</span>
