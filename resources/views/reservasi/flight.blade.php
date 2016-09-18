@@ -45,6 +45,7 @@
       				<option value="{{$i}}">{{$i}}</option>
       				@endfor
       			</select>
+                        <label for="">Adult</label>
       		</div>
       		<div class="input-field col s1">
       			<select name="child" id="child" class="browser-default">
@@ -52,6 +53,7 @@
       				<option value="{{$i}}">{{$i}}</option>
       				@endfor
       			</select>
+                        <label for="">Child</label>
       		</div>
       		<div class="input-field col s1">
       			<select name="infant" id="infant" class="browser-default">
@@ -59,6 +61,7 @@
       				<option value="{{$i}}">{{$i}}</option>
       				@endfor
       			</select>
+                        <label for="">Infant</label>
       		</div>
       		<div class="input-field col s3">
       			<span class="btn" id="search_button" onclick="search()">Search</span>
