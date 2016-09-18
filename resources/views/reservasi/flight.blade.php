@@ -62,7 +62,7 @@
       		</div>
       	</div>
             <div class="row">
-                  <div class="input-field col s3 right">
+                  <div class="input-field right">
                         <span class="btn" id="search_button" onclick="search()">Search</span>
                   </div>
             </div>
