@@ -107,7 +107,7 @@
                   },
                   dataType:'json',//hasil berupa json
                   success:function(data) {
-                        if(data.departures!=null){
+                        if(data.departures.length==0){
                         //ambil data departures
                         var hasil_depart = data.departures;
 
