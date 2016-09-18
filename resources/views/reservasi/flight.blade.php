@@ -87,7 +87,7 @@
 	check_type();
 
       function search() {
-            $("#search_button").val('Please Wait...');
+            $("#search_button").html('Please Wait...');
 
             $.ajax({
                   url:'{{route("ajax_search_flight")}}',
@@ -153,7 +153,7 @@
                         $("#result").html(html);
                         $('.collapsible').collapsible();
 
-                        $("#search_button").val('Search');
+                        $("#search_button").html('Search');
 
                         //$("#result").html(data);
                   }
