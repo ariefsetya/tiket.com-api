@@ -10,7 +10,7 @@
       		<div class="input-field col s6">
       		<select name="from" class="browser-default" id="from">
       			@foreach($airport as $key)
-      				<option value="{{$key->airport_code}}">
+      				<option value="{{$key->airport_code}}" {{$key->airport_code=="CGK"?"selected":""}}>
       					{{$key->airport_name}} ({{$key->airport_code}})
       				</option>
       			@endforeach
@@ -18,7 +18,7 @@
       		<div class="input-field col s6">
       		<select name="to" class="browser-default" id="to">
       			@foreach($airport as $key)
-      				<option value="{{$key->airport_code}}">
+      				<option value="{{$key->airport_code}}" {{$key->airport_code=="DPS"?"selected":""}}>
       					{{$key->airport_name}} ({{$key->airport_code}})
       				</option>
       			@endforeach
@@ -61,7 +61,7 @@
       			</select>
       		</div>
       		<div class="input-field col s3">
-      			<span class="btn" onclick="search()">Search</span>
+      			<span class="btn" id="search_button" onclick="search()">Search</span>
       		</div>
       	</div>
       </div>
@@ -87,6 +87,8 @@
 	check_type();
 
       function search() {
+            $("#search_button").val('Please Wait...');
+
             $.ajax({
                   url:'{{route("ajax_search_flight")}}',
                   type:'POST',
@@ -151,6 +153,7 @@
                         $("#result").html(html);
                         $('.collapsible').collapsible();
 
+                        $("#search_button").val('Search');
 
                         //$("#result").html(data);
                   }
